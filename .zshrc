@@ -100,7 +100,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
@@ -121,3 +124,5 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=~/flutter/bin:$PATH
 
 alias vim=vimx
+
+[[ -s "/home/fedora/.gvm/scripts/gvm" ]] && source "/home/fedora/.gvm/scripts/gvm"

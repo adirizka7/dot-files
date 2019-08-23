@@ -20,6 +20,9 @@ Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'gabesoft/vim-ags'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " vim-go
@@ -36,3 +39,9 @@ let g:go_highlight_variable_assignments = 1
 
 " ag - silver searcher
 let g:ag_working_path_mode="r"
+
+" gruvbox
+colorscheme gruvbox
+set background=dark
+let g:gruvbox_contrast_dark='soft'
+let g:airline_theme='gruvbox'
