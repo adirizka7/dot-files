@@ -23,6 +23,7 @@ Plug 'gabesoft/vim-ags'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'davidhalter/jedi-vim'
 call plug#end()
 
 " vim-go
@@ -45,3 +46,7 @@ colorscheme gruvbox
 set background=dark
 let g:gruvbox_contrast_dark='soft'
 let g:airline_theme='gruvbox'
+
+" CP
+nnoremap <C-c> :!g++ -o  %:r % -std=c++11<Enter>
+nnoremap <C-x> :!./%:r<%:r.in>%:r.out;cat %:r.out<Enter>
