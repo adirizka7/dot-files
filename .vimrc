@@ -1,5 +1,6 @@
 set number
 set clipboard=unnamedplus
+filetype plugin indent on
 
 " On pressing tab, insert 2 spaces
 set expandtab
@@ -24,6 +25,7 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'davidhalter/jedi-vim'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
 " vim-go
@@ -50,3 +52,7 @@ let g:airline_theme='gruvbox'
 " CP
 nnoremap <C-c> :!g++ -o  %:r % -std=c++11<Enter>
 nnoremap <C-x> :!./%:r<%:r.in>%:r.out;cat %:r.out<Enter>
+
+" Jedi-Vim for Python
+let g:jedi#completions_enabled = 0
+let g:jedi#show_call_signatures = 0
