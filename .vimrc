@@ -1,5 +1,6 @@
 set number
 set clipboard=unnamedplus
+syntax on
 filetype plugin indent on
 
 " On pressing tab, insert 2 spaces
@@ -26,6 +27,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'davidhalter/jedi-vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'ayu-theme/ayu-vim'
+Plug 'mhartington/oceanic-next'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " vim-go
@@ -39,15 +43,21 @@ let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
+nnoremap <C-j> :GoReferrers<Enter>
 
 " ag - silver searcher
 let g:ag_working_path_mode="r"
 
 " gruvbox
-colorscheme gruvbox
-set background=dark
-let g:gruvbox_contrast_dark='soft'
-let g:airline_theme='gruvbox'
+" colorscheme gruvbox
+" set background=dark
+" let g:gruvbox_contrast_dark='soft'
+" let g:airline_theme='gruvbox'
+
+" OceanicNext
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
 
 " CP
 nnoremap <C-c> :!g++ -o  %:r % -std=c++11<Enter>
@@ -56,3 +66,6 @@ nnoremap <C-x> :!./%:r<%:r.in>%:r.out;cat %:r.out<Enter>
 " Jedi-Vim for Python
 let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures = 0
+
+" Others
+nnoremap <F2> :echo @%<Enter>

@@ -121,7 +121,8 @@ function f {
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=~/flutter/bin:$PATH
+export PATH=$PATH:~/flutter/bin
+export PATH=$PATH:/home/fedora/.local/bin
 
 alias vim=vimx
 
