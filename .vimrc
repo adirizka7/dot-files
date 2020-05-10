@@ -30,6 +30,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'ayu-theme/ayu-vim'
 Plug 'mhartington/oceanic-next'
 Plug 'sheerun/vim-polyglot'
+Plug 'ternjs/tern_for_vim'
 call plug#end()
 
 " vim-go
@@ -43,7 +44,14 @@ let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
+let g:go_fmt_command = "goimports"
 nnoremap <C-j> :GoReferrers<Enter>
+
+" moving preferences
+xnoremap <C-h> 10k
+xnoremap <C-l> 10j
+nnoremap <C-h> 10k
+nnoremap <C-l> 10j
 
 " ag - silver searcher
 let g:ag_working_path_mode="r"
@@ -69,3 +77,6 @@ let g:jedi#show_call_signatures = 0
 
 " Others
 nnoremap <F2> :echo @%<Enter>
+
+" Prettier
+let g:prettier#config#print_width = '84'
