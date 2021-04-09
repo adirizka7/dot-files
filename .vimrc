@@ -1,6 +1,10 @@
+set cursorline
+set relativenumber
 set number
 set clipboard=unnamedplus
+set shortmess-=S
 syntax on
+
 filetype plugin indent on
 " On pressing tab, insert 2 spaces
 set expandtab
@@ -39,6 +43,8 @@ Plug 'google/vim-glaive'
 Plug 'alfredodeza/pytest.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main'}
+Plug 'dhruvasagar/vim-table-mode'
 call plug#end()
 
 " vim-go
@@ -66,16 +72,27 @@ nnoremap * *``
 " ag - silver searcher
 let g:ag_working_path_mode="r"
 
-" gruvbox
+" " gruvbox
 " colorscheme gruvbox
 " set background=dark
 " let g:gruvbox_contrast_dark='soft'
 " let g:airline_theme='gruvbox'
 
-" OceanicNext
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
+" " OceanicNext
+" let g:oceanic_next_terminal_bold = 1
+" let g:oceanic_next_terminal_italic = 1
+" colorscheme OceanicNext
+
+" Spaceduck
+if exists('+termguicolors')
+   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+   set termguicolors
+endif
+colorscheme spaceduck
+hi LineNr guifg=#7880ba ctermfg=236 guibg=#0f111b ctermbg=233 gui=NONE cterm=NONE
+hi Normal guifg=#eeeff6 ctermfg=255 guibg=#0f111b ctermbg=233 gui=NONE cterm=NONE
+hi Comment guifg=#5861a7 ctermfg=236 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 
 " C++
 nnoremap <C-c> :!g++ -o  %:r % -std=c++11<Enter>
@@ -92,7 +109,7 @@ nnoremap <F2> :echo @%<Enter>
 let g:prettier#config#print_width = '84'
 
 " dos2unix
-command Dos2unix :e ++ff=dos | :set ff=unix | :w
+nnoremap <silent> <leader>rl :set ff=unix<CR> :e ++ff=dos<CR>
 
 " FZF
 nnoremap <C-p> :GFiles<Enter>
