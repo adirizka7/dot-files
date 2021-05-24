@@ -18,6 +18,13 @@ set updatetime=100
 set wildmode=longest,list
 set wildmenu
 
+" Install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'thosakwe/vim-flutter'
@@ -114,3 +121,6 @@ nnoremap <silent> <leader>rl :set ff=unix<CR> :e ++ff=dos<CR>
 " FZF
 nnoremap <C-p> :GFiles<Enter>
 nnoremap <C-f> :Ag<Enter>
+
+" Clipboard Sharing Mac
+set clipboard=unnamed
