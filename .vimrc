@@ -3,6 +3,7 @@ set relativenumber
 set number
 set clipboard=unnamedplus
 set shortmess-=S
+set is hls
 syntax on
 
 filetype plugin indent on
