@@ -68,6 +68,7 @@ let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_fmt_command = "goimports"
 nnoremap <C-j> :GoReferrers<Enter>
+nnoremap <C-k> :GoImplements<Enter>
 
 " moving preferences
 xnoremap <C-h> 10k
