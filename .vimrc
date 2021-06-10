@@ -78,9 +78,6 @@ nnoremap <C-h> 10k
 nnoremap <C-l> 10j
 nnoremap * *``
 
-" ag - silver searcher
-let g:ag_working_path_mode="r"
-
 " " gruvbox
 " colorscheme gruvbox
 " set background=dark
@@ -111,9 +108,17 @@ nnoremap <C-x> :!./%:r<%:r.in>%:r.out;cat %:r.out<Enter>
 let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures = 0
 
-" Show file name 
-nnoremap <F2> :echo @%<Enter>
+" Show file name with line number and copy to clipboard
+nnoremap <C-g> :call GetFileNameWithLineNumber()<cr>
 
+function! GetFileNameWithLineNumber()
+    redir @*
+        echo join([expand('%'),  line(".")], ':')
+    redir END
+endfunction
+
+" ag - silver searcher
+let g:ag_working_path_mode="r"
 " Prettier
 let g:prettier#config#print_width = '84'
 
