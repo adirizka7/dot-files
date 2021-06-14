@@ -27,20 +27,33 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+" Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" Python
+Plug 'davidhalter/jedi-vim'
+
+" Flutter
 Plug 'thosakwe/vim-flutter'
 Plug 'dart-lang/dart-vim-plugin'
+
+" Themes
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main'}
+Plug 'ayu-theme/ayu-vim'
+Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" anything else
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'w0rp/ale'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'gabesoft/vim-ags'
-Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'davidhalter/jedi-vim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'ayu-theme/ayu-vim'
-Plug 'mhartington/oceanic-next'
 Plug 'sheerun/vim-polyglot'
 Plug 'ternjs/tern_for_vim'
 Plug 'iamcco/markdown-preview.vim'
@@ -49,10 +62,6 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-coverage'
 Plug 'google/vim-glaive'
 Plug 'alfredodeza/pytest.vim'
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'pineapplegiant/spaceduck', { 'branch': 'main'}
-Plug 'dhruvasagar/vim-table-mode'
 call plug#end()
 
 " vim-go
@@ -110,10 +119,9 @@ let g:jedi#show_call_signatures = 0
 
 " Show file name with line number and copy to clipboard
 nnoremap <C-g> :call GetFileNameWithLineNumber()<cr>
-
 function! GetFileNameWithLineNumber()
     redir @*
-        echo join([expand('%'),  line(".")], ':')
+        echon join([expand('%'),  line(".")], ':')
     redir END
 endfunction
 
@@ -126,8 +134,18 @@ let g:prettier#config#print_width = '84'
 nnoremap <silent> <leader>rl :set ff=unix<CR> :e ++ff=dos<CR>
 
 " FZF
-nnoremap <C-p> :GFiles<Enter>
 nnoremap <C-f> :Ag<Enter>
+nnoremap <C-p> :call BrowseFiles()<cr>
+function! BrowseFiles()
+  let shellcmd = 'git rev-parse --is-inside-work-tree'
+
+  let output=system(shellcmd)
+  if v:shell_error
+    execute ':Files'
+  else
+    execute ':GFiles'
+  endif
+endfunction
 
 " Clipboard Sharing Mac
 set clipboard=unnamed
