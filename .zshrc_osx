@@ -23,3 +23,26 @@ function f {
         grep -Hr "$1" * --color=always -Fn;
     fi
 }
+
+# Flutter
+export PATH="$PATH:/Users/adirizka/development/flutter/bin"
+
+# Android SDKs
+export ANDROID_HOME=$HOME/android
+export PATH=$ANDROID_HOME/cmdline-tools/tools/bin/:$PATH
+export PATH=$ANDROID_HOME/emulator/:$PATH
+export PATH=$ANDROID_HOME/platform-tools/:$PATH
+
+# GVM
+source $HOME/.gvm/scripts/gvm
+
+# Go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+export PATH=$(go env GOBIN):$PATH
+
+# MYSql
+# PATH="/usr/local/opt/mysql@5.7/bin:$PATH"'
+
+# Enable vi key binding in zsh
+set -o vi
