@@ -4,6 +4,7 @@ set number
 set clipboard=unnamedplus
 set shortmess-=S
 set is hls
+set ignorecase # ignore case on autocomplete
 syntax on
 
 filetype plugin indent on
@@ -18,6 +19,8 @@ set updatetime=100
 " mimic bash's completion
 set wildmode=longest,list
 set wildmenu
+" NetRW tree view
+let g:netrw_liststyle = 3
 
 " Install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -127,6 +130,8 @@ endfunction
 
 " ag - silver searcher
 let g:ag_working_path_mode="r"
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
 " Prettier
 let g:prettier#config#print_width = '84'
 
@@ -149,3 +154,8 @@ endfunction
 
 " Clipboard Sharing Mac
 set clipboard=unnamed
+
+" Flutter
+let g:dart_format_on_save = 1
+let dart_html_in_string=v:true
+let g:dart_style_guide = 2
